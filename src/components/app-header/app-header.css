@@ -1,0 +1,10 @@
+.navbar-nav { 
+    flex-direction: row;
+  
+}
+ a {
+    margin: 20px;
+}
+body{
+    font-size: 1.40rem;
+}
