@@ -7,17 +7,20 @@ const getResource = async(url) =>{
     return body;
 };
 
-export const reducer = (state={posts:[{id:0},{id:2}]}, action) => {
+export const reducer = (state={posts:[{id:0,title:'dfd'},{id:2}]}, action) => {
     switch (action.type){
         case 'load':
-            let bodyOfRequest=[]; 
+            let bodyOfRequest=[];
             getResource('https://jsonplaceholder.typicode.com/posts').then((body) => {
-                bodyOfRequest=body;
-                console.log(body);
+                bodyOfRequest.push(...body);
             }).catch((err)=>{
                 console.error('Could not fetch', err);
             });
-            return {...state, posts:[...bodyOfRequest]};
+            console.log(bodyOfRequest)
+            console.log(state);   
+             state = {...state,posts:[...bodyOfRequest]};
+             console.log(state);
+             return state
         default: 
             return state;
             
