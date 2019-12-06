@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import {reducer} from './reducer';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware } from "redux";
 import {Header} from './components/app-header/app-header.js';
 import {BrowserRouter as Router, Route} from  'react-router-dom';
 import {Main} from './components/main/main';
@@ -10,8 +10,9 @@ import Posts from './components/posts/posts';
 import {Albums} from './components/albums/albums';
 import {Footer} from './components/app-footer/app-footer';
 import {Provider} from 'react-redux';
+import thunk from "redux-thunk";
 
-const store = createStore(reducer);
+const store = createStore(reducer,applyMiddleware(thunk));
 
 /*const {dispatch} = store;*/
 /*const loadDispatch= bindActionCreators(load,dispatch);*/

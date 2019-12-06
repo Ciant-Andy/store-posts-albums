@@ -1,28 +1,22 @@
 import React from 'react';
 import './posts.css';
-import {connect} from 'react-redux';
-import {load} from '../../actions'
+import PostsBlock from '../posts-block/posts-block';
 
- const Posts = ({state, load})=>{
-    return (
-    <div>
-    <button className="btn btn-primary btn-lg" onClick={load}>Oru</button>
-    <h2>Posts</h2>
- <h2>{state.posts[0].id}</h2>
-    </div>
-    );
-};
 
-const mapStateToProps = (state)=>{
-    return {
-        state: state
-    };
-}
+ class Posts extends React.Component{
+    render() {
+        return  ( 
+            <div>
+                <h2>Posts</h2>
+                <div className="com-md-12">
+                    <div class="container">
+                        <div class="row">
+                            <PostsBlock></PostsBlock>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+}};
 
-const mapDispatchToProps=(dispatch)=>{
-    return{
-        load: ()=> dispatch(load())
-    }
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(Posts);
+export default Posts;
