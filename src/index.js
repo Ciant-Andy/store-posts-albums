@@ -11,6 +11,8 @@ import {Albums} from './components/albums/albums';
 import {Footer} from './components/app-footer/app-footer';
 import {Provider} from 'react-redux';
 import thunk from "redux-thunk";
+import Post from "./components/post/post";
+import ChangePost from "./components/change-post/changePost";
 
 const store = createStore(reducer,applyMiddleware(thunk));
 
@@ -25,6 +27,8 @@ ReactDOM.render(
             <Route exact path="/" component={Main} />
             <Route path="/posts" component={Posts} />
             <Route path="/albums" component={Albums} />
+            <Route path='/post/:id' exact component={Post} />
+            <Route path='/post/changepost/:id' exact component={ChangePost} />
     <Footer/>
     </Router>
     </Provider>

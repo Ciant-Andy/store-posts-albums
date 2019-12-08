@@ -9,8 +9,8 @@ import PostsBlock from '../posts-block/posts-block';
             <div>
                 <h2>Posts</h2>
                 <div className="com-md-12">
-                    <div class="container">
-                        <div class="row">
+                    <div className="container">
+                        <div className="row">
                             <PostsBlock></PostsBlock>
                         </div>
                     </div>
