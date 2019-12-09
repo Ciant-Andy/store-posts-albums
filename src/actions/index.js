@@ -21,6 +21,14 @@ export function loadPosts(posts){
     }
 }
 
+export function changePost(post,idChangePost){
+    return {
+        type: "CHANGE_POST",
+        post: post,
+        idChangePost: idChangePost
+    }
+}
+
 export function loadPostById(currentPost){
     return {
         type: "LOAD_POST_BY_ID",

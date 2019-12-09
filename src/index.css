@@ -1,0 +1,18 @@
+* {
+    margin: 0;/*это свойство можно удалить, если вы используете reset, normalize или нечто подобное*/
+  }
+  
+  html,
+  body {
+    height: 100%;
+  }
+
+body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+.content {
+  flex: 1 0 auto;
+  padding: 1rem;
+}
