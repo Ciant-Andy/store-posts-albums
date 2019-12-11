@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as actionsCreators from '../../actions';
 import {Link} from  'react-router-dom';
+import { Redirect } from 'react-router';
 
  class Post extends React.Component{
     constructor(props){
@@ -13,10 +14,12 @@ import {Link} from  'react-router-dom';
       }
     
     render() {
-        return  ( 
+    
+            return  ( 
             <div>
                  <Link to={`changepost/${this.id}`}>Change post</Link>
-                 <a onClick={()=>this.props.deletePost(this.id)}>Delete post</a>
+                 <Link to="/posts" onClick={()=>this.props.deletePost(this.id)} >Delete post</Link>
+                 
                <h1>{this.props.currentPost.title}</h1>
                <p>{this.props.currentPost.body}</p>
             </div>

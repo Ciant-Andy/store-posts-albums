@@ -36,6 +36,13 @@ export function deletePost(idDeletePost){
     }
 }
 
+export function addPost(post){
+    return {
+        type: "ADD_POST",
+        newPost: post
+    }
+}
+
 export function loadPostById(currentPost){
     return {
         type: "LOAD_POST_BY_ID",
