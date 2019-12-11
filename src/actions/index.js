@@ -29,6 +29,13 @@ export function changePost(post,idChangePost){
     }
 }
 
+export function deletePost(idDeletePost){
+    return {
+        type: "DELETE_POST",
+        idDeletePost: idDeletePost
+    }
+}
+
 export function loadPostById(currentPost){
     return {
         type: "LOAD_POST_BY_ID",

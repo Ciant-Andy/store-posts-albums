@@ -16,6 +16,7 @@ import {Link} from  'react-router-dom';
         return  ( 
             <div>
                  <Link to={`changepost/${this.id}`}>Change post</Link>
+                 <a onClick={()=>this.props.deletePost(this.id)}>Delete post</a>
                <h1>{this.props.currentPost.title}</h1>
                <p>{this.props.currentPost.body}</p>
             </div>

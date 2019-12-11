@@ -26,10 +26,14 @@ export const reducer = (state=initialState, action) => {
                 ...state,
               currentPost: action.currentPost
             };
+        case 'DELETE_POST':
+          state.splice(action.idDeletePost, 1)
+          console.log(state);
+            return {
+              ...state,
+            }
         case 'CHANGE_POST':
-          console.log(action.post);
           state.posts[action.idChangePost-1]= action.post;
-          console.log(state.posts);
             return {
               ...state,
             }
