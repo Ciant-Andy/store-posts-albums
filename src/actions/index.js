@@ -28,6 +28,12 @@ export function changePost(post,idChangePost){
         idChangePost: idChangePost
     }
 }
+export function loadByPageNumber(page){
+    return {
+        type: "LOAD_BY_PAGE_NUMBER",
+        page: page,
+    }
+}
 
 export function deletePost(idDeletePost){
     return {
