@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import * as actionsCreators from '../../actions';
 import {Link} from  'react-router-dom';
 import { Redirect } from 'react-router';
+import Comment from '../comments/comments'
 
  class Post extends React.Component{
     constructor(props){
@@ -22,6 +23,8 @@ import { Redirect } from 'react-router';
                  
                <h1>{this.props.currentPost.title}</h1>
                <p>{this.props.currentPost.body}</p>
+               Comment: <br></br><br></br>
+               <Comment></Comment>
             </div>
         );
 }};

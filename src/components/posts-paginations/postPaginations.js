@@ -5,21 +5,15 @@ import * as actionsCreators from '../../actions'
 import {Link} from  'react-router-dom';
 
  class PostsPaginations extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            active: false,
-        };
-    }  
-      toggleClass() {
-          console.log(this.state);
-        const currentState = this.state.active;
-        this.setState({ active: !currentState });
-    };
+      
     
     render() {
-        return  ( this.props.postsOnPage.map((item)=> 
-            <a className={this.state.active && 'active'} onClick={() => this.setState({active: !this.state.active})} >1</a>
+        let pageNumbers=[]; 
+        for (let i=1;i<=Math.ceil(this.props.posts.length/10);i++){
+            pageNumbers.push(i)
+        }
+        return  ( pageNumbers.map((item)=> 
+            <a key={item} onClick={() => this.props.loadByPageNumber(item)} >{item}</a>
     ));
 }};
 const mapStateToProps = (state)=>{

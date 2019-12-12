@@ -7,6 +7,13 @@ export function load(){
         })
     }
 }
+export function loadComments(id){
+    return (dispatch) =>{
+        return axios.get("http://jsonplaceholder.typicode.com/comments?postId="+id).then((response)=>{
+             dispatch(loadCommentsFunc(response.data));
+        })
+    }
+}
 export function loadOne(id){
     return (dispatch) =>{
         return axios.get("http://jsonplaceholder.typicode.com/posts/"+id).then((response)=>{
@@ -18,6 +25,12 @@ export function loadPosts(posts){
     return {
         type: "LOAD_POSTS",
         posts: posts
+    }
+}
+export function loadCommentsFunc(comments){
+    return {
+        type: "LOAD_COMMENTS",
+        comments: comments
     }
 }
 

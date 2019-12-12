@@ -4,7 +4,8 @@ const initialState = {
     loading: false,
     error: null,
     currentPost: {id:0,title:'',body:""},
-    postsOnPage:[{id:0,title:""}]
+    postsOnPage:[{id:0,title:""}],
+    commentsOnPage:[]
   };
   
 
@@ -12,7 +13,8 @@ export const reducer = (state=initialState, action) => {
     switch (action.type){
         case 'LOAD_POSTS': 
           if (!state.loading){
-           let firstPosts = state.postsOnPage=action.posts.splice(0,10);
+           let newFirstPost=[...action.posts]
+           let firstPosts=newFirstPost.splice(0,10);
             return {
               ...state,
               loading: true,
@@ -28,6 +30,25 @@ export const reducer = (state=initialState, action) => {
             return {
                 ...state,
               currentPost: action.currentPost
+            };
+        case 'LOAD_BY_PAGE_NUMBER':
+            let newPage=0;
+            let newCurrentPosts = [...state.posts]
+            if (action.page == 1){
+                 newPage=0;
+            }
+            else{
+              newPage=(action.page*10)-10;
+            }
+            let newCurrentPostsOnPage = newCurrentPosts.splice(newPage,10);   
+            return {
+                ...state,
+                postsOnPage: newCurrentPostsOnPage
+            };
+        case 'LOAD_COMMENTS':
+            return {
+                ...state,
+                commentsOnPage: action.comments
             };
         case 'DELETE_POST':
          let newPost=state.posts.filter((post)=> post.id!=action.idDeletePost )
