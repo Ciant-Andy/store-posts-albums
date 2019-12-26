@@ -6,8 +6,9 @@ import {Link} from  'react-router-dom';
 
  class PostsBlock extends React.Component{ 
     componentDidMount() {
-        this.props.load();
+            this.props.load();
       }
+    
     render() {
         return  ( this.props.postsOnPage.map((item)=> 
     <div  key={item.id} className="col-md-2 post">

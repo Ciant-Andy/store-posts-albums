@@ -34,7 +34,7 @@ export const reducer = (state=initialState, action) => {
         case 'LOAD_BY_PAGE_NUMBER':
             let newPage=0;
             let newCurrentPosts = [...state.posts]
-            if (action.page == 1){
+            if (action.page === 1){
                  newPage=0;
             }
             else{
@@ -51,16 +51,37 @@ export const reducer = (state=initialState, action) => {
                 commentsOnPage: action.comments
             };
         case 'DELETE_POST':
-         let newPost=state.posts.filter((post)=> post.id!=action.idDeletePost )
+         let newPost=state.posts.filter((post)=> parseInt(post.id,10)!==parseInt( action.idDeletePost, 10))
          state.posts=newPost; 
+         let newDelete=0;
+            let newDeleteCurrentPosts = [...state.posts]
+            if (action.page === 1){
+                 newDelete=0;
+            }
+            else{
+              newDelete=(action.page*10)-10;
+            }
+            let newDeleteCurrentPostsOnPage = newDeleteCurrentPosts.splice(newDelete,10);   
             return {
               ...state,
+              postsOnPage: newDeleteCurrentPostsOnPage
             }
         case 'CHANGE_POST':
-            let newPostChange=state.posts.map((post)=> post.id==action.idChangePost? post=action.post: post)
+            let newPostChange=state.posts.map((post)=> parseInt(post.id,10)===parseInt(action.idChangePost,10)? post=action.post: post)
             state.posts=newPostChange; 
+            let newChange=0;
+            let newChangeCurrentPosts = [...state.posts]
+            if (action.page === 1){
+                 newChange=0;
+            }
+            else{
+              newChange=(action.page*10)-10;
+            }
+            let newChangeCurrentPostsOnPage = newChangeCurrentPosts.splice(newChange,10);   
             return {
               ...state,
+              postsOnPage: newChangeCurrentPostsOnPage
+              
             }
         case 'ADD_POST':
           let newId=  state.posts[state.posts.length-1].id

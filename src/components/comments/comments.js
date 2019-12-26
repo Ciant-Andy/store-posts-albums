@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import * as actionsCreators from '../../actions'
-import {Link} from  'react-router-dom';
 
  class Comments extends React.Component{
     componentDidMount() {
@@ -9,9 +8,12 @@ import {Link} from  'react-router-dom';
       }
    
     render() {
-
         return  ( this.props.commentsOnPage.map((item)=> 
-            <a key={item}>{item.body} </a>
+           <div key={item.id}>
+               <p style={{float:'left'}}><b>{item.email}</b></p><br></br>
+               <p >{item.body} </p> 
+               
+               <br></br> </div> 
     ));
 }};
 const mapStateToProps = (state)=>{

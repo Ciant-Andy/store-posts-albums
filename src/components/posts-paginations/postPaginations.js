@@ -2,7 +2,6 @@ import React from 'react';
 import './postPaginations.css';
 import {connect} from 'react-redux';
 import * as actionsCreators from '../../actions'
-import {Link} from  'react-router-dom';
 
  class PostsPaginations extends React.Component{
       
@@ -13,7 +12,7 @@ import {Link} from  'react-router-dom';
             pageNumbers.push(i)
         }
         return  ( pageNumbers.map((item)=> 
-            <a key={item} onClick={() => this.props.loadByPageNumber(item)} >{item}</a>
+            <p key={item} onClick={() => this.props.loadByPageNumber(item)} >{item}</p>
     ));
 }};
 const mapStateToProps = (state)=>{

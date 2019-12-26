@@ -41,7 +41,7 @@ export function changePost(post,idChangePost){
         idChangePost: idChangePost
     }
 }
-export function loadByPageNumber(page){
+export function loadByPageNumber(page=1){
     return {
         type: "LOAD_BY_PAGE_NUMBER",
         page: page,
