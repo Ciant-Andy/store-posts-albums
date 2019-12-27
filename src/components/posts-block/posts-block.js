@@ -19,7 +19,5 @@ import {Link} from  'react-router-dom';
 const mapStateToProps = (state)=>{
     return state;
 }
-/*
-<button className="btn btn-primary btn-lg" onClick={()=> this.props.load()}>Oru</button>
-*/  
+
 export default connect(mapStateToProps,actionsCreators)(PostsBlock);

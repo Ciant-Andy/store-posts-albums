@@ -1,17 +1,48 @@
 
 const initialState = {
-    posts: [{id:0,title:'dfd'},{id:2}],
+    posts: [{id:0,title:''}],
+    albums: [{id:0,title:''}],
     loading: false,
     error: null,
     currentPost: {id:0,title:'',body:""},
+    currentPhotos: [{id:0,title:'',body:""}],
     postsOnPage:[{id:0,title:""}],
+    albumsOnPage:[{id:0,title:""}],
     commentsOnPage:[]
   };
   
 
 export const reducer = (state=initialState, action) => {
     switch (action.type){
-        case 'LOAD_POSTS': 
+     case 'LOAD_ALBUMS': 
+       let newFirstAlbums=[...action.albums]
+       let firstAlbums=newFirstAlbums.splice(0,10);
+        return {
+          ...state,
+          albums: action.albums,
+          albumsOnPage:firstAlbums
+        }
+      case 'LOAD_BY_ALBUM_PAGE_NUMBER':
+            let newAlbumPage=0;
+            let newAlbumCurrentPosts = [...state.albums]
+            if (action.albunPage === 1){
+                 newAlbumPage=0;
+            }
+            else{
+              newAlbumPage=(action.albumPage*10)-10;
+            }
+            let newAlbumCurrentPostsOnPage = newAlbumCurrentPosts.splice(newAlbumPage,10);   
+            return {
+                ...state,
+                albumsOnPage: newAlbumCurrentPostsOnPage
+            };
+      case 'LOAD_ALBUMS_BY_ID':
+        console.log(action.currentPhotos)
+              return {
+                  ...state,
+                currentPhotos: action.currentPhotos
+              };
+      case 'LOAD_POSTS': 
           if (!state.loading){
            let newFirstPost=[...action.posts]
            let firstPosts=newFirstPost.splice(0,10);
